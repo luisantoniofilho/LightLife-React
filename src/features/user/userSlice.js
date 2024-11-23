@@ -33,7 +33,7 @@ const initialState = {
     },
   },
 
-  isLogged: true,
+  isLogged: false,
 };
 
 const userSlice = createSlice({

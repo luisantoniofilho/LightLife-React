@@ -23,21 +23,24 @@ function LoginUser() {
   }
 
   return !isLogged ? (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    // If IS NOT LOGGED
+    <div className="flex min-h-screen items-center justify-center bg-white">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center bg-white p-8 rounded-lg shadow-md w-full min-w-1"
+        className="flex w-full flex-col items-center rounded-lg bg-white p-6 shadow-md sm:p-10 md:px-20 lg:px-60"
       >
-        <h1 className="text-2xl font-bold text-green-600 mb-4">Login</h1>
+        <h1 className="mb-6 text-3xl font-bold text-green-600 sm:mb-8 lg:text-4xl">
+          Login
+        </h1>
         <input
-          className="w-full p-2 mb-3 border border-green-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mb-3 w-full rounded-md border border-green-600 p-2 focus:outline-none focus:ring-2 focus:ring-green-500 sm:p-3"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="w-full p-2 mb-3 border border-green-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="mb-3 w-full rounded-md border border-green-600 p-2 focus:outline-none focus:ring-2 focus:ring-green-500 sm:p-3"
           type="password"
           placeholder="Senha"
           value={password}
@@ -45,12 +48,12 @@ function LoginUser() {
         />
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300"
+          className="w-full rounded-md bg-green-600 py-2 text-white transition duration-300 hover:bg-green-700 sm:py-3 sm:text-xl"
         >
           Login
         </button>
         <button
-          className="text-green-600 mt-4 hover:underline"
+          className="mt-4 text-green-600 hover:underline sm:text-xl"
           onClick={() => navigate("/register")}
         >
           Registrar-se?
@@ -58,21 +61,28 @@ function LoginUser() {
       </form>
     </div>
   ) : (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-white p-8">
-      <h1 className="text-2xl font-bold text-green-600 mb-4">
-        Você está logado!
+    // If IS LOGGED
+    <div className="flex min-h-screen flex-col items-center justify-center bg-white p-8 lg:px-32">
+      <h1 className="mb-8 text-4xl font-bold text-green-600 md:mb-20 md:text-5xl">
+        Você já está logado!
       </h1>
       <button
-        className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300 mb-4"
+        className="mb-4 w-full rounded-md bg-green-600 py-2 text-xl text-white transition duration-300 hover:bg-green-700 md:py-4 md:text-3xl"
         onClick={() => navigate("/form")}
       >
-        Ir para formulário
+        Ir para o formulário
       </button>
       <button
-        className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300"
+        className="mb-4 w-full rounded-md bg-green-600 py-2 text-xl text-white transition duration-300 hover:bg-green-700 md:py-4 md:text-3xl"
         onClick={() => navigate("/macros")}
       >
         Ir para os macronutrientes
+      </button>
+      <button
+        className="w-full rounded-md bg-green-600 py-2 text-xl text-white transition duration-300 hover:bg-green-700 md:py-4 md:text-3xl"
+        onClick={() => navigate("/meals")}
+      >
+        Ir para as refeições sugeridas
       </button>
     </div>
   );

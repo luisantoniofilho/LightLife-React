@@ -44,7 +44,7 @@ function InputUserPhysicalData() {
         goal,
         physicalActivityLevel,
         gender,
-      })
+      }),
     );
 
     clearFields();
@@ -52,20 +52,22 @@ function InputUserPhysicalData() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-white">
+    <div className="flex min-h-screen items-center justify-center bg-white">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full"
+        className="flex w-full flex-col items-center rounded-lg bg-white p-6 shadow-md lg:px-44"
       >
-        <h1 className="text-2xl font-bold text-green-600 mb-4">
+        <h1 className="mb-4 text-2xl font-bold text-green-600 sm:text-3xl lg:text-4xl">
           Suas informações corporais
         </h1>
 
         {/* Age input */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">Idade:</label>
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
+            Idade:
+          </label>
           <input
-            className="w-full p-2 mb-3 border border-green-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="mb-3 w-full rounded-md border border-green-600 p-2 focus:outline-none focus:ring-2 focus:ring-green-500 md:text-xl"
             type="number"
             placeholder="Digite sua idade"
             value={age}
@@ -74,12 +76,12 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Weight input */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
             Peso (kg):
           </label>
           <input
-            className="w-full p-2 mb-3 border border-green-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="mb-3 w-full rounded-md border border-green-600 p-2 focus:outline-none focus:ring-2 focus:ring-green-500 md:text-xl"
             type="number"
             placeholder="Digite seu peso"
             value={weight}
@@ -88,12 +90,12 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Height input */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
             Altura (cm):
           </label>
           <input
-            className="w-full p-2 mb-3 border border-green-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="mb-3 w-full rounded-md border border-green-600 p-2 focus:outline-none focus:ring-2 focus:ring-green-500 md:text-xl"
             type="number"
             placeholder="Digite sua altura"
             value={height}
@@ -102,10 +104,12 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Gender section */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">Gênero:</label>
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
+            Gênero:
+          </label>
           <div className="flex space-x-4">
-            <div className="flex items-center">
+            <div className="flex items-center md:text-xl">
               <input
                 className="mr-2"
                 type="radio"
@@ -117,7 +121,7 @@ function InputUserPhysicalData() {
               <label className="text-green-600">Masculino</label>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center md:text-xl">
               <input
                 className="mr-2"
                 type="radio"
@@ -132,9 +136,11 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Goal section */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">Objetivo:</label>
-          <div className="flex flex-col space-y-2">
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
+            Objetivo:
+          </label>
+          <div className="flex flex-col space-y-2 md:text-xl">
             <div className="flex items-center">
               <input
                 className="mr-2"
@@ -174,12 +180,12 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Physical activity section */}
-        <div className="flex flex-col items-start w-full mb-4">
-          <label className="text-green-600 font-semibold mb-2">
-            Nível de Atividade Física:
+        <div className="mb-4 flex w-full flex-col items-start">
+          <label className="mb-2 text-xl font-semibold text-green-600 md:text-2xl">
+            Nível de Atividade Física (sem contar o treino):
           </label>
 
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 md:text-xl">
             <div className="flex items-center">
               <input
                 className="mr-2"
@@ -239,8 +245,8 @@ function InputUserPhysicalData() {
         </div>
 
         {/* Information about steps */}
-        <div className="flex flex-col items-start w-full mb-6">
-          <label className="text-blue-600 font-semibold mb-2">
+        <div className="mb-6 flex w-full flex-col items-start">
+          <label className="mb-2 font-semibold text-blue-600 md:text-xl">
             Informações para ajudar a identificar o nível de atividade física:
           </label>
           <p className="text-blue-500">- Sedentário: até 5k passos por dia</p>
@@ -258,7 +264,7 @@ function InputUserPhysicalData() {
         {/* Send button */}
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300"
+          className="w-full rounded-md bg-green-600 py-2 text-white transition duration-300 hover:bg-green-700 md:text-xl"
         >
           Enviar
         </button>

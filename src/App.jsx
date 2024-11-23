@@ -10,9 +10,10 @@ import Home from "./ui/Home";
 import InputUserPhysicalData from "./features/physicalData/InputUserPhysicalData";
 import MacroNutrientsGraphic from "./features/macros/MacroNutrientsGraphic";
 import { useSelector } from "react-redux";
-import MealsSuggestions from "./features/meets/MealsSugestions";
+import MealsSuggestions from "./features/meals/MealsSugestions";
 
 // Component to protect the routes
+// eslint-disable-next-line react/prop-types
 function ProtectedRoute({ children }) {
   // Select the isLogged state from the Redux store
   const isLogged = useSelector((state) => state.user.isLogged);

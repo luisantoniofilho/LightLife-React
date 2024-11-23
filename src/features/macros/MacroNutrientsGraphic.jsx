@@ -49,7 +49,7 @@ function MacroNutrientsGraphic() {
       carbs: trainingDaysMacros.carbs,
       protein: trainingDaysMacros.protein,
       fat: trainingDaysMacros.fat,
-    })
+    }),
   );
 
   /////////////////////
@@ -69,27 +69,27 @@ function MacroNutrientsGraphic() {
       carbs: restDayMacros.carbs,
       protein: restDayMacros.protein,
       fat: restDayMacros.fat,
-    })
+    }),
   );
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-green-600 my-6">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
+      <h1 className="my-6 text-3xl font-bold text-green-600 md:my-8 md:text-4xl">
         Seus Macronutrientes
       </h1>
 
       {/* Macronutrients display for TRAINING DAYS */}
-      <div className="w-4/5 min-w-40 bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-gray-700 mb-4">
+      <div className="w-4/5 min-w-40 rounded-lg bg-white p-6 shadow-md">
+        <h2 className="mb-4 text-2xl font-bold text-gray-700">
           Dias de treino
         </h2>
 
         {/* Carbohydrates */}
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-blue-600">Carboidratos</h2>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-blue-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-blue-500"
               style={{
                 width: `${
                   (trainingDaysMacros.carbs / trainingDaysTotalGrams) * 100
@@ -97,7 +97,7 @@ function MacroNutrientsGraphic() {
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
             {trainingDaysMacros.carbs}g
           </p>
         </div>
@@ -105,9 +105,9 @@ function MacroNutrientsGraphic() {
         {/* Protein */}
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-green-600">Proteínas</h2>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-green-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-green-500"
               style={{
                 width: `${
                   (trainingDaysMacros.protein / trainingDaysTotalGrams) * 100
@@ -115,7 +115,7 @@ function MacroNutrientsGraphic() {
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
             {trainingDaysMacros.protein}g
           </p>
         </div>
@@ -123,9 +123,9 @@ function MacroNutrientsGraphic() {
         {/* Fats */}
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-yellow-600">Gorduras</h2>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-yellow-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-yellow-500"
               style={{
                 width: `${
                   (trainingDaysMacros.fat / trainingDaysTotalGrams) * 100
@@ -133,13 +133,13 @@ function MacroNutrientsGraphic() {
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
             {trainingDaysMacros.fat}g
           </p>
         </div>
 
         {/* Total calories display */}
-        <div className="mt-6 border-t pt-4 flex justify-between items-center">
+        <div className="mt-6 flex items-center justify-between border-t pt-4">
           <span className="text-xl font-bold text-green-600">
             Total de Calorias:
           </span>
@@ -153,55 +153,61 @@ function MacroNutrientsGraphic() {
       </div>
 
       {/* Macronutrients display for REST DAYS */}
-      <div className="w-4/5 min-w-40 bg-white shadow-md rounded-lg p-6 mt-6">
-        <h2 className="text-2xl font-bold text-gray-700 mb-4">
+      <div className="mt-6 w-4/5 min-w-40 rounded-lg bg-white p-6 shadow-md">
+        <h2 className="mb-4 text-2xl font-bold text-gray-700">
           Dias de descanso
         </h2>
 
         {/* Carbohydrates */}
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-blue-600">Carboidratos</h3>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-blue-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-blue-500"
               style={{
                 width: `${(restDayMacros.carbs / restDaysTotalGrams) * 100}%`,
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">{restDayMacros.carbs}g</p>
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
+            {restDayMacros.carbs}g
+          </p>
         </div>
 
         {/* Protein */}
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-green-600">Proteínas</h3>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-green-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-green-500"
               style={{
                 width: `${(restDayMacros.protein / restDaysTotalGrams) * 100}%`,
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">{restDayMacros.protein}g</p>
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
+            {restDayMacros.protein}g
+          </p>
         </div>
 
         {/* Fats */}
         <div className="mb-4">
           <h3 className="text-lg font-semibold text-yellow-600">Gorduras</h3>
-          <div className="w-full bg-gray-200 rounded-full h-4">
+          <div className="h-4 w-full rounded-full bg-gray-200">
             <div
-              className="bg-yellow-500 h-4 rounded-full"
+              className="h-4 rounded-full bg-yellow-500"
               style={{
                 width: `${(restDayMacros.fat / restDaysTotalGrams) * 100}%`,
               }}
             ></div>
           </div>
-          <p className="text-sm text-gray-600 mt-1">{restDayMacros.fat}g</p>
+          <p className="mt-1 text-sm text-gray-600 md:text-base">
+            {restDayMacros.fat}g
+          </p>
         </div>
 
         {/* Total calories display for rest day */}
-        <div className="mt-6 border-t pt-4 flex justify-between items-center">
+        <div className="mt-6 flex items-center justify-between border-t pt-4">
           <span className="text-xl font-bold text-green-600">
             Total de Calorias:
           </span>
@@ -216,13 +222,13 @@ function MacroNutrientsGraphic() {
 
       {/* Tips */}
       <div className="mt-2">
-        <h3 className="text-center my-2">Dicas</h3>
-        <p className="text-sm text-gray-600 text-center">
+        <h3 className="my-2 text-center md:text-lg">Dicas</h3>
+        <p className="text-center text-sm text-gray-600 md:text-base">
           - Realizar pelo menos 30 minutos de exercícios aeróbicos nos dias de
           descanso.
         </p>
         {/* Tip about protein distribution and cardio recommendation */}
-        <p className="mb-2 text-sm text-gray-600 text-center">
+        <p className="mb-2 text-center text-sm text-gray-600 md:text-base">
           - Recomendavel distribuir os macronutrientes em pelo menos 4 refeições
           ao longo do dia.
         </p>
@@ -230,20 +236,20 @@ function MacroNutrientsGraphic() {
 
       {/* Button to register new data */}
       <button
+        className="my-2 rounded-full bg-green-600 px-6 py-2 text-white transition duration-300 hover:bg-green-700 md:text-xl"
         onClick={() => navigate("/form")}
-        className="my-6  bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
       >
         Registrar Novos Dados
       </button>
 
       {/* Button to see recommendded meals */}
       <button
+        className="mb-6 mt-2 rounded-full bg-green-600 px-6 py-2 text-white transition duration-300 hover:bg-green-700 md:text-xl"
         onClick={() =>
           navigate("/meals", {
-            state: { trainingDaysMacros, restDayMacros }, // Passando os macros como estado
+            state: { trainingDaysMacros, restDayMacros }, // Passing the macros
           })
         }
-        className="my-6 bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
       >
         Ver refeições sugeridas
       </button>
