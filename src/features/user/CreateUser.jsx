@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "./userSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
+import { signUp } from "./user.thunks"; // Thunk responsável pelo registro
+import { createUser } from "./userSlice";
 
 function CreateUser() {
   const [username, setUsername] = useState("");
@@ -11,13 +14,30 @@ function CreateUser() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!username || !email || !password) return;
+    if (!username || !email || !password) {
+      toast.error("Preencha todos os campos");
+      return;
+    }
 
-    dispatch(createUser({ username, email, password }));
-    navigate("/login");
+    try {
+      const result = await dispatch(signUp({ email, password }));
+      console.log(result);
+
+      if (signUp.fulfilled.match(result)) {
+        // Creating user on Redux
+        dispatch(createUser(username));
+        toast.success("Conta criada com sucesso!");
+        navigate("/login");
+      } else {
+        // Error message
+        toast.error(result.payload.slice(5));
+      }
+    } catch (error) {
+      toast.error(`Erro inesperado: ${error}`);
+    }
   }
 
   return (
@@ -26,7 +46,7 @@ function CreateUser() {
         Registro
       </h1>
       <form
-        onSubmit={(e) => handleSubmit(e)}
+        onSubmit={handleSubmit}
         className="flex w-full flex-col items-center rounded-lg bg-white p-6 shadow-md sm:p-10 md:px-20 lg:px-60"
       >
         <input
@@ -59,6 +79,7 @@ function CreateUser() {
         </button>
 
         <button
+          type="button"
           className="mt-4 text-green-600 hover:underline sm:text-xl"
           onClick={() => navigate("/login")}
         >

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logIn, logOut, signUp } from "./user.thunks";
 
 const initialState = {
   username: "",
@@ -34,29 +35,19 @@ const initialState = {
   },
 
   isLogged: false,
+  isLoading: false,
+  error: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // Example
-    updateName(state, action) {
-      state.username = action.payload;
-    },
-    createUser(state, action) {
+    crateUser(state, action) {
       state.username = action.payload.username;
-      state.email = action.payload.email;
-      state.password = action.payload.password;
     },
-    loginUser(state, action) {
-      if (!state.username || !state.password) return;
-
-      if (
-        state.email === action.payload.email &&
-        state.password === action.payload.password
-      )
-        state.isLogged = true;
+    loginUser(state) {
+      state.isLogged = true;
     },
     updatePhysicalData(state, action) {
       state.physicalData.age = action.payload.age;
@@ -76,6 +67,50 @@ const userSlice = createSlice({
       state.macros.restDayMacros.protein = action.payload.protein;
       state.macros.restDayMacros.fat = action.payload.fat;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      // Sign up
+      .addCase(signUp.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(signUp.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // Login
+      .addCase(logIn.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.email = action.payload.email;
+        state.isLogged = true;
+      })
+      .addCase(logIn.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // Logout
+      .addCase(logOut.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logOut.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isLogged = false;
+        state.email = "";
+      })
+      .addCase(logOut.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 

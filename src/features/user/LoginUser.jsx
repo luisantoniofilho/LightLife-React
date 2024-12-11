@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logIn } from "./user.thunks";
+import toast from "react-hot-toast";
 import { loginUser } from "./userSlice";
 
 function LoginUser() {
@@ -12,21 +14,34 @@ function LoginUser() {
 
   const isLogged = useSelector((state) => state.user.isLogged);
 
-  function handleSubmit(e) {
+  async function onHandleSubmit(e) {
     e.preventDefault();
 
-    if (!email || !password) return;
+    if (!email || !password) {
+      toast.error("Preencha todos os campos");
+      return;
+    }
 
-    dispatch(loginUser({ email, password }));
+    try {
+      const result = await dispatch(logIn({ email, password }));
 
-    navigate("/form");
+      if (logIn.fulfilled.match(result)) {
+        dispatch(loginUser());
+        toast.success("Login realizado com sucesso!");
+        navigate("/form");
+      } else {
+        toast.error(result.payload.slice(5));
+      }
+    } catch (error) {
+      toast.error(`Erro inesperado: ${error}`);
+    }
   }
 
   return !isLogged ? (
     // If IS NOT LOGGED
     <div className="flex min-h-screen items-center justify-center bg-white">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={onHandleSubmit}
         className="flex w-full flex-col items-center rounded-lg bg-white p-6 shadow-md sm:p-10 md:px-20 lg:px-60"
       >
         <h1 className="mb-6 text-3xl font-bold text-green-600 sm:mb-8 lg:text-4xl">

@@ -3,14 +3,16 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import AppLayout from "./ui/AppLayout";
 import CreateUser from "./features/user/CreateUser";
 import LoginUser from "./features/user/LoginUser";
 import Home from "./ui/Home";
 import InputUserPhysicalData from "./features/physicalData/InputUserPhysicalData";
 import MacroNutrientsGraphic from "./features/macros/MacroNutrientsGraphic";
-import { useSelector } from "react-redux";
 import MealsSuggestions from "./features/meals/MealsSugestions";
+import { Toaster } from "react-hot-toast";
 
 // Component to protect the routes
 // eslint-disable-next-line react/prop-types
@@ -68,7 +70,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />; // Render the router provider with the defined routes
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
+  );
 }
 
 export default App;
